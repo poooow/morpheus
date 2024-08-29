@@ -1,0 +1,36 @@
+@import url('https://fonts.googleapis.com/css2?family=Signika:wght@300..700&display=swap');
+
+.signika-600 {
+  font-family: "Signika", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 600;
+  font-style: normal;
+  font-variation-settings: "GRAD" 0;
+}
+
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+* {
+  margin: 0;
+}
+
+:root {
+  --color-pink: #e8738a;
+  --color-pink-dark: #e5617c;
+  --box-shadow: 2px 2px 0px 0px rgba(224, 224, 224, 0.5);
+}
+
+
+body {
+  margin: 0;
+  font-family: "Signika", sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+    monospace;
+}
