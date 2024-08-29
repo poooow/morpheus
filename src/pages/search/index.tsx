@@ -7,7 +7,7 @@ import * as S from './styles'
 
 export default function Search() {
   const { drugList } = useData()
-  const [searchParams, setSearchParams] = useSearchParams()
+  const [searchParams] = useSearchParams()
   const [query, setQuery] = useState("")
 
   useEffect(() => {
