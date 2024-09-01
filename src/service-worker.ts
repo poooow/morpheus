@@ -12,7 +12,7 @@ import { clientsClaim } from 'workbox-core'
 import { ExpirationPlugin } from 'workbox-expiration'
 import { precacheAndRoute, createHandlerBoundToURL } from 'workbox-precaching'
 import { registerRoute } from 'workbox-routing'
-import { StaleWhileRevalidate, CacheFirst } from 'workbox-strategies'
+import { StaleWhileRevalidate, CacheFirst, NetworkFirst } from 'workbox-strategies'
 
 declare const self: ServiceWorkerGlobalScope
 
@@ -80,15 +80,15 @@ self.addEventListener('message', (event) => {
 // Any other custom service worker logic can go here.
 
 registerRoute(
-  ({url}) => url.origin === 'https://docs.google.com/',
-  new StaleWhileRevalidate({
-      cacheName: 'druglist',
+  ({ url }) => url.origin.includes('googleusercontent.com') || url.origin.includes('docs.google.com'),
+  new NetworkFirst({
+    cacheName: 'druglist',
   })
-);
+)
 
 registerRoute(
-  ({url}) => url.origin === 'https://fonts.googleapis.com' || url.origin === 'https://fonts.gstatic.com',
+  ({ url }) => url.origin === 'https://fonts.googleapis.com' || url.origin === 'https://fonts.gstatic.com',
   new CacheFirst({
-      cacheName: 'google-fonts',
+    cacheName: 'google-fonts',
   })
-);
+)
