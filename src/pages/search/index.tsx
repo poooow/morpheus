@@ -21,7 +21,7 @@ export default function Search() {
     <>
       <S.Header>
         <S.SearchIcon><FontAwesomeIcon icon={faMagnifyingGlass} /></S.SearchIcon>
-        <input type="text" value={query} onChange={(e) => setQuery(e.target.value)} placeholder="Název léku" />
+        <input type="text" name="search" value={query} onChange={(e) => setQuery(e.target.value)} placeholder="Název léku" />
       </S.Header>
       <S.Main>
         {!drugList.length ? <S.Loading>Loading ...</S.Loading> :

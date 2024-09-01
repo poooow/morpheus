@@ -46,7 +46,7 @@ export default function Drug() {
           <>
             <S.Title>{drug.unit1desc}</S.Title>
             <S.InputContainer>
-              <S.Input type="text" inputMode="numeric" value={count} onChange={(e) => setCount(Number(e.target.value))} min="0" />
+              <S.Input type="text" name="count" inputMode="numeric" value={count} onChange={(e) => setCount(Number(e.target.value))} min="0" />
               <S.Unit>{drug.unit1}</S.Unit>
               <S.Button onClick={() => setCount(count >= 1 ? count - 1 : 0)}>-</S.Button>
               <S.Button onClick={() => setCount(prev => prev + 1)}>+</S.Button>
