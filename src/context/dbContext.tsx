@@ -17,7 +17,7 @@ const DbContextProvider = ({ children }: any) => {
   useEffect(() => {
     if (!usedDrugs) return
 
-    // Sord used drugs by last used time
+    // Sort used drugs by last used time
     const usedDrugsSorted = usedDrugs.sort((a: any, b: any) =>
       usedDrugs.find((drug: any) => drug.id === b.id)?.time -
       usedDrugs.find((drug: any) => drug.id === a.id)?.time
