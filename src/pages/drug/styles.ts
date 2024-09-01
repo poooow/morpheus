@@ -7,20 +7,40 @@ export const Header = styled.header`
   height: 72px;
   display: flex;
   align-content: center;
-  padding: 20px 20px 20px 50px;
+  justify-content: space-between;
   box-shadow: 0px 2px 0px 0px #e0e0e0;
   background: linear-gradient(0deg, var(--color-pink) 0%, #e5617c 75%);
   font-weight: 600;
 
   a {
+    display: flex;
+    align-items: center;
+    justify-content: center;
     color: #ffffff;
     font-size: 1.75rem;
     text-decoration: none;
   }
 `
 
+export const HeaderLeft = styled.div`
+  display: flex;
+  flex-grow: 1;
+`
+
 export const BackIcon = styled.div`
-  position: fixed;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 54px;
+  font-size: 28px;
+  height: 72px;
+
+  svg path {
+    fill: #ffffff;
+  }
+`
+
+export const MenuIcon = styled.div`  
   display: flex;
   align-items: center;
   justify-content: center;
@@ -29,6 +49,7 @@ export const BackIcon = styled.div`
   width: 54px;
   font-size: 28px;
   height: 72px;
+  cursor: pointer;
 
   svg path {
     fill: #ffffff;

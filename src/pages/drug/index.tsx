@@ -3,15 +3,19 @@ import { useData } from '../../context/dbContext'
 import { useLocal } from '../../context/localContext'
 import { Link, useParams } from 'react-router-dom'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faArrowLeft } from '@fortawesome/free-solid-svg-icons'
+import { faArrowLeft, faEllipsisVertical } from '@fortawesome/free-solid-svg-icons'
 import * as S from "./styles"
 import Markdown from 'react-markdown'
+import InputSelectorSwipe from '../../componets/inputSelectorSwipe'
+import InputSelectorSteps from '../../componets/inputSelectorSteps'
+import SelectorMenu from '../../componets/selectorMenu'
 
 export default function Drug() {
   const { drugList } = useData()
-  const { usedDrugs, setUsedDrugs } = useLocal()
+  const { usedDrugs, setUsedDrugs, selectedSelector, setSelectedSelector } = useLocal()
   const { drugId } = useParams()
   const [count, setCount] = useState(0)
+  const [showMenu, setShowMenu] = useState(false)
 
   const drug = drugList.find((drug: any) => drug.id === drugId)
 
@@ -34,12 +38,16 @@ export default function Drug() {
   return (
     <>
       <S.Header>
-        <Link to="/" aria-label="Back">
-          <S.BackIcon>
-            <FontAwesomeIcon icon={faArrowLeft} />
-          </S.BackIcon>
-          {drug?.name}
-        </Link>
+        <S.HeaderLeft>
+          <Link to="/" aria-label="Back">
+            <S.BackIcon>
+              <FontAwesomeIcon icon={faArrowLeft} />
+            </S.BackIcon>
+            <div>{drug?.name}</div>
+          </Link>
+        </S.HeaderLeft>
+        <S.MenuIcon onClick={() => setShowMenu(prev => !prev)}><FontAwesomeIcon icon={faEllipsisVertical} /></S.MenuIcon>
+        {showMenu && <SelectorMenu setShowMenu={setShowMenu} setSelectedSelector={setSelectedSelector} selectedSelector={selectedSelector}/>}
       </S.Header>
       <S.Main>
         {!drug ? <div>Loading ...</div> :
@@ -51,6 +59,8 @@ export default function Drug() {
               <S.Button onClick={() => setCount(count >= 1 ? count - 1 : 0)}>-</S.Button>
               <S.Button onClick={() => setCount(prev => prev + 1)}>+</S.Button>
             </S.InputContainer>
+            {selectedSelector === 'steps' && <InputSelectorSteps count={count} setCount={setCount} />}
+            {selectedSelector === 'swipe' && <InputSelectorSwipe count={count} setCount={setCount} />}
             <S.Title>Dávkování</S.Title>
             <S.Result>{Number(count) * drug.factor} {drug.unit2}</S.Result>
             <S.Description><Markdown>{drug.description}</Markdown></S.Description>

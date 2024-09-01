@@ -19,6 +19,7 @@
 :root {
   --color-pink: #e8738a;
   --color-pink-dark: #e5617c;
+  --color-gray: #e0e0e0;
   --box-shadow: 2px 2px 0px 0px rgba(224, 224, 224, 0.5);
 }
 
