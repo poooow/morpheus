@@ -1,5 +1,5 @@
 import { createContext, useState, useContext, useEffect } from 'react'
-import { type Selector } from '../componets/selectorMenu'
+import { type Selector } from '../components/selectorMenu'
 
 interface ContextProps {
   usedDrugs: any

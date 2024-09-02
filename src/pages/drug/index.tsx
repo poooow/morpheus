@@ -6,9 +6,9 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faArrowLeft, faEllipsisVertical } from '@fortawesome/free-solid-svg-icons'
 import * as S from "./styles"
 import Markdown from 'react-markdown'
-import InputSelectorSwipe from '../../componets/inputSelectorSwipe'
-import InputSelectorSteps from '../../componets/inputSelectorSteps'
-import SelectorMenu from '../../componets/selectorMenu'
+import InputSelectorSwipe from '../../components/inputSelectorSwipe'
+import InputSelectorSteps from '../../components/inputSelectorSteps'
+import SelectorMenu from '../../components/selectorMenu'
 
 export default function Drug() {
   const { drugList } = useData()
