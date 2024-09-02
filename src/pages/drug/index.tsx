@@ -19,8 +19,6 @@ export default function Drug() {
 
   const drug = drugList.find((drug: any) => drug.id === drugId)
 
-  useEffect(() => { }, [drugList])
-
   useEffect(() => {
     if (!drug || count === 0) return
 
