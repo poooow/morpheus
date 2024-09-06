@@ -8,7 +8,9 @@ import * as S from "./styles"
 import Markdown from 'react-markdown'
 import InputSelectorSwipe from '../../components/inputSelectorSwipe'
 import InputSelectorSteps from '../../components/inputSelectorSteps'
-import SelectorMenu from '../../components/selectorMenu'
+import Menu from '../../components/Menu'
+
+export type Selector = 'swipe' | 'steps' | null
 
 export default function Drug() {
   const { drugList } = useData()
@@ -16,6 +18,7 @@ export default function Drug() {
   const { drugId } = useParams()
   const [count, setCount] = useState(0)
   const [showMenu, setShowMenu] = useState(false)
+  const [selectedMenuItem, setSelectedMenuItem] = useState<Selector>(selectedSelector)
 
   const drug = drugList.find((drug: any) => drug.id === drugId)
 
@@ -33,6 +36,17 @@ export default function Drug() {
     if (usedDrugs.length) setCount(usedDrugs.find((drug: any) => drug.id === drugId)?.count || 0)
   }, [])
 
+  function handleSelectMenuItem(name: Selector) {
+    setSelectedMenuItem(name)
+    setSelectedSelector(name)
+  }
+
+  const menuItems = [
+    { id: 'steps', name: 'Výběr po krocích', onClick: () => handleSelectMenuItem('steps') },
+    { id: 'swipe', name: 'Výběr swipe', onClick: () => handleSelectMenuItem('swipe')},
+    { id: null, name: 'Skrýt výběr', onClick: () => handleSelectMenuItem(null)},
+  ]
+
   return (
     <>
       <S.Header>
@@ -45,7 +59,7 @@ export default function Drug() {
           </Link>
         </S.HeaderLeft>
         <S.MenuIcon onClick={() => setShowMenu(prev => !prev)}><FontAwesomeIcon icon={faEllipsisVertical} /></S.MenuIcon>
-        {showMenu && <SelectorMenu setShowMenu={setShowMenu} setSelectedSelector={setSelectedSelector} selectedSelector={selectedSelector}/>}
+        {showMenu && <Menu setShow={setShowMenu} items={menuItems} selected={selectedMenuItem} />}
       </S.Header>
       <S.Main>
         {!drug ? <div>Loading ...</div> :

@@ -9,7 +9,7 @@ export const Header = styled.header`
   align-content: center;
   justify-content: space-between;
   box-shadow: 0px 2px 0px 0px #e0e0e0;
-  background: linear-gradient(0deg, var(--color-pink) 0%, #e5617c 75%);
+  background: linear-gradient(0deg, #e5617c 0%, var(--color-pink) 75%);
   font-weight: 600;
 
   a {

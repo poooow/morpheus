@@ -5,9 +5,11 @@ export const Header = styled.header`
   top: 0;
   width: 100vw;
   height: 72px;
-  padding: 12px;
+  display: flex;
+  align-items: center;
+  padding: 12px 0 12px 12px;
   box-shadow: var(--box-shadow);
-  background: linear-gradient(0deg, var(--color-pink) 0%, #e5617c 75%);
+  background: linear-gradient(0deg, #e5617c 0%, var(--color-pink) 75%);
 
   input {
     width: 100%;
@@ -25,6 +27,27 @@ export const Header = styled.header`
     }
   }
 `
+
+export const HeaderLeft = styled.div`
+  display: flex;
+  flex-grow: 1;
+  height: 100%;
+`
+
+export const MenuIcon = styled.div`  
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 54px;
+  font-size: 28px;
+  height: 72px;
+  cursor: pointer;
+
+  svg path {
+    fill: #ffffff;
+  }
+`
+
 
 export const SearchIcon = styled.div`
   position: fixed;
