@@ -96,6 +96,7 @@ export const Button = styled.button`
   background: var(--color-pink);
   width: 64px;
   height: 64px;
+  padding: 0;
   font-size: 3rem;
   font-family: "Signika", sans-serif;
   color: #ffffff;

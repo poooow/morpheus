@@ -11,8 +11,8 @@ export const Button = styled.button`
   display: flex;
   justify-content: center;
   flex-basis: 42px;
-
   flex-shrink: 0;
+  padding: 0;
   background: var(--color-pink);
   font-size: 2rem;
   font-family: "Signika", sans-serif;
