@@ -1,9 +1,18 @@
-import React from 'react';
-import { render, screen } from '@testing-library/react';
-import App from './App';
+import { expect, test } from 'vitest'
+import { render, screen } from "@testing-library/react"
+import App from './App'
 
-test('renders learn react link', () => {
-  render(<App />);
-  const linkElement = screen.getByText(/learn react/i);
-  expect(linkElement).toBeInTheDocument();
-});
+test('renders search input', () => {
+  render(<App />)
+  expect(screen.getByPlaceholderText('Název léku')).toBeDefined()
+})
+
+test('renders menu', () => {
+  render(<App />)
+  expect(screen.getByLabelText('menu')).toBeDefined()
+})
+
+test('renders loading', () => {
+  render(<App />)
+  expect(screen.getByText('Loading ...')).toBeDefined()
+})
