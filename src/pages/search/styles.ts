@@ -34,7 +34,8 @@ export const HeaderLeft = styled.div`
   height: 100%;
 `
 
-export const MenuIcon = styled.div`  
+export const MenuButton = styled.button`
+  all: unset;
   display: flex;
   align-items: center;
   justify-content: center;

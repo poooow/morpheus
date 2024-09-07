@@ -58,7 +58,9 @@ export default function Drug() {
             <div>{drug?.name}</div>
           </Link>
         </S.HeaderLeft>
-        <S.MenuIcon onClick={() => setShowMenu(prev => !prev)}><FontAwesomeIcon icon={faEllipsisVertical} /></S.MenuIcon>
+        <S.MenuButton onClick={() => setShowMenu(prev => !prev)}>
+          <FontAwesomeIcon icon={faEllipsisVertical} />
+        </S.MenuButton>
         {showMenu && <Menu setShow={setShowMenu} items={menuItems} selected={selectedMenuItem} />}
       </S.Header>
       <S.Main>

@@ -32,9 +32,9 @@ export default function Search() {
           <S.SearchIcon><FontAwesomeIcon icon={faMagnifyingGlass} /></S.SearchIcon>
           <input type="text" name="search" value={query} onChange={(e) => setQuery(e.target.value)} placeholder="Název léku" size={10}/>
         </S.HeaderLeft>
-        <S.MenuIcon onClick={() => setShowMenu(prev => !prev)}>
+        <S.MenuButton onClick={() => setShowMenu(prev => !prev)} aria-label="menu">
           <FontAwesomeIcon icon={faEllipsisVertical} />
-        </S.MenuIcon>
+        </S.MenuButton>
         {showMenu &&
           <Menu
             setShow={setShowMenu}

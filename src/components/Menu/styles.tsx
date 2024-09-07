@@ -9,7 +9,7 @@ export const Container = styled.div`
   background: #ffffff;
   border: 1px solid #e0e0e0;
   border-radius: 16px;
-        box-shadow: var(--box-shadow);
+  box-shadow: var(--box-shadow);
 
   ul {
     list-style: none;

@@ -40,7 +40,8 @@ export const BackIcon = styled.div`
   }
 `
 
-export const MenuIcon = styled.div`  
+export const MenuButton = styled.button`
+  all: unset;
   display: flex;
   align-items: center;
   justify-content: center;
