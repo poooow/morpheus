@@ -12,8 +12,13 @@ export default function InputSelectorSwipe({ count, setCount }: Props) {
 
 
   const handleButtonClick = (count: number) => {
-    if (power === 0) setFirstPower(count)
-    else setCount(firstPower * 10 + count)
+    if (power === 0) {
+      setFirstPower(count)
+      setCount(count)
+    }
+    else {
+      setCount(firstPower * 10 + count)
+    }
     setPower((power + 1) % 2)
   }
 
