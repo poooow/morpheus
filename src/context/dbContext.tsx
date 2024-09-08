@@ -7,10 +7,12 @@ const DbContext = createContext<any>({})
 const DbContextProvider = ({ children }: any) => {
   const { usedDrugs } = useLocal()
   const [drugList, setDrugList] = useState<any>([])
+  const [loading, setLoading] = useState(true)
 
   useEffect(() => {
     (async () => {
       setDrugList(await fetchDrugList())
+      setLoading(false)
     })()
   }, [])
 
@@ -39,7 +41,7 @@ const DbContextProvider = ({ children }: any) => {
   }, [usedDrugs])
 
   return (
-    <DbContext.Provider value={{ drugList, setDrugList }}>
+    <DbContext.Provider value={{ drugList, setDrugList, loading }}>
       {children}
     </DbContext.Provider>
   )

@@ -8,7 +8,7 @@ import ShareModal from '../../components/shareModal'
 import * as S from './styles'
 
 export default function Search() {
-  const { drugList } = useData()
+  const { drugList, loading } = useData()
   const [searchParams] = useSearchParams()
   const [query, setQuery] = useState("")
   const [showMenu, setShowMenu] = useState(false)
@@ -43,11 +43,12 @@ export default function Search() {
         }
       </S.Header>
       <S.Main>
-        {!drugList.length ? <S.Loading>Loading ...</S.Loading> :
+        {loading ? <S.ResultMessage>Načítání ...</S.ResultMessage> :
+          drugList.filter(resultFilter).length === 0 ? <S.ResultMessage>Žádný lek nenalezen</S.ResultMessage> :
           <ul>
             {
               drugList.filter(resultFilter).map((drug: any) => (
-                <li key={drug.id}><Link to={`/drug/${drug.id}`}>{drug.name}</Link></li>
+                <li key={drug.id} data-testid={drug.id}><Link to={`/drug/${drug.id}`}>{drug.name}</Link></li>
               ))
             }
           </ul>}

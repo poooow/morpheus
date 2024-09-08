@@ -87,6 +87,9 @@ export const Main = styled.main`
     }
   }
 `
-export const Loading = styled.div`
-
+export const ResultMessage = styled.div`
+  text-align: center;
+  padding-top: 3rem;
+  font-size: 2rem;
+  color: var(--color-gray);
 `
