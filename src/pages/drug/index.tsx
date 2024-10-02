@@ -64,13 +64,13 @@ export default function Drug() {
         {showMenu && <Menu setShow={setShowMenu} items={menuItems} selected={selectedMenuItem} />}
       </S.Header>
       <S.Main>
-        {!drug ? <div>Loading ...</div> :
+        {!drug ? <S.Loading>Načítání ...</S.Loading> :
           <>
             <S.Title>{drug.unit1desc}</S.Title>
             <S.InputContainer>
               <S.Input type="text" name="count" inputMode="numeric" value={count} onChange={(e) => setCount(Number(e.target.value))} min="0" />
               <S.Unit>{drug.unit1}</S.Unit>
-              <S.Button onClick={() => setCount(count >= 1 ? count - 1 : 0)}>-</S.Button>
+              <S.Button onClick={() => setCount(prev => prev >= 1 ? prev - 1 : 0)}>-</S.Button>
               <S.Button onClick={() => setCount(prev => prev + 1)}>+</S.Button>
             </S.InputContainer>
             {selectedSelector === 'steps' && <InputSelectorSteps count={count} setCount={setCount} />}

@@ -120,3 +120,10 @@ export const Result = styled.div`
 `
 
 export const Description = styled.div``
+
+export const Loading = styled.div`
+  text-align: center;
+  padding-top: 3rem;
+  font-size: 2rem;
+  color: var(--color-gray);
+`
