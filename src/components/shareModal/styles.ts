@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled from "styled-components"
 
 export const Overlay = styled.div`
   position: fixed;
@@ -18,7 +18,7 @@ export const Container = styled.div`
   border-radius: 1rem;
 
   img {
-    width: calc(100vw - 6rem);
+    max-width: calc(100vw - 6rem);
     height: auto;
   }
 
