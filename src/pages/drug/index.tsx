@@ -64,7 +64,7 @@ export default function Drug() {
         {showMenu && <Menu setShow={setShowMenu} items={menuItems} selected={selectedMenuItem} />}
       </S.Header>
       <S.Main>
-        {!drug ? <S.Loading>Načítání ...</S.Loading> :
+        {!drug ? <S.Loading><img src="/piggy-bw.svg" alt="loading" /></S.Loading> :
           <>
             <S.Title>{drug.unit1desc}</S.Title>
             <S.InputContainer>

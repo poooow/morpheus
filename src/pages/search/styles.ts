@@ -87,6 +87,25 @@ export const Main = styled.main`
     }
   }
 `
+export const Loading = styled.div`
+  text-align: center;
+  padding-top: 3rem;
+  animation: appear 1.5s ease-in-out infinite alternate;
+
+  img {
+    max-width: calc(100vw - 6rem);
+  }
+  
+  @keyframes appear {
+    from {
+      opacity: 0.25;
+    }
+    to {
+      opacity: 0.05;
+    }
+  }
+`
+
 export const ResultMessage = styled.div`
   text-align: center;
   padding-top: 3rem;

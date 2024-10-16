@@ -43,7 +43,7 @@ export default function Search() {
         }
       </S.Header>
       <S.Main>
-        {loading ? <S.ResultMessage>Načítání ...</S.ResultMessage> :
+        {loading ? <S.Loading><img src="/piggy-bw.svg" alt="loading" /></S.Loading> :
           drugList.filter(resultFilter).length === 0 ? <S.ResultMessage>Žádný lek nenalezen</S.ResultMessage> :
           <ul>
             {

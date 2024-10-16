@@ -124,6 +124,18 @@ export const Description = styled.div``
 export const Loading = styled.div`
   text-align: center;
   padding-top: 3rem;
-  font-size: 2rem;
-  color: var(--color-gray);
+  animation: appear 1.5s ease-in-out infinite alternate;
+
+  img {
+    max-width: calc(100vw - 6rem);
+  }
+  
+  @keyframes appear {
+    from {
+      opacity: 0.25;
+    }
+    to {
+      opacity: 0.05;
+    }
+  }
 `
