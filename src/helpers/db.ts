@@ -16,11 +16,11 @@ export async function fetchDrugList() {
 
 function parseCSV(csvText: string) {
   const rows = csvText.split(/\r?\n/)
-  const headers = rows[0].split(',')
+  const headers = rows[0].split('\t')
   const data = []
 
   for (let i = 1; i < rows.length; i++) {
-    const rowData = rows[i].split(',')
+    const rowData = rows[i].split('\t')
     const rowObject: { [key: string]: string } = {}
     for (let j = 0; j < headers.length; j++) {
       rowObject[headers[j]] = rowData[j]

@@ -9,6 +9,7 @@ import Markdown from 'react-markdown'
 import InputSelectorSwipe from '../../components/inputSelectorSwipe'
 import InputSelectorSteps from '../../components/inputSelectorSteps'
 import Menu from '../../components/Menu'
+import applyFormula from '../../helpers/applyFormula'
 
 export type Selector = 'swipe' | 'steps' | null
 
@@ -76,7 +77,7 @@ export default function Drug() {
             {selectedSelector === 'steps' && <InputSelectorSteps count={count} setCount={setCount} />}
             {selectedSelector === 'swipe' && <InputSelectorSwipe count={count} setCount={setCount} />}
             <S.Title>Dávkování</S.Title>
-            <S.Result>{Number(count) * drug.factor} {drug.unit2}</S.Result>
+            <S.Result>{applyFormula(count, drug.factor)} {drug.unit2}</S.Result>
             <S.Description><Markdown>{drug.description}</Markdown></S.Description>
           </>
         }
