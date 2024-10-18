@@ -6,7 +6,7 @@ const DbContext = createContext<any>({})
 
 const DbContextProvider = ({ children }: any) => {
   const { usedDrugs } = useLocal()
-  const [drugList, setDrugList] = useState<any>([])
+  const [drugList, setDrugList] = useState<any>([]) // TODO: Retype when schema is ready
   const [loading, setLoading] = useState(true)
 
   useEffect(() => {

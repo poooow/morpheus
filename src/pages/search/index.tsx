@@ -1,10 +1,11 @@
 import { useEffect, useState } from 'react'
-import { Link, useSearchParams } from "react-router-dom"
+import { useSearchParams } from "react-router-dom"
 import { useData } from '../../context/dbContext'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faMagnifyingGlass, faEllipsisVertical } from '@fortawesome/free-solid-svg-icons'
 import Menu from '../../components/Menu'
 import ShareModal from '../../components/shareModal'
+import List from './List'
 import * as S from './styles'
 
 export default function Search() {
@@ -17,9 +18,7 @@ export default function Search() {
   useEffect(() => {
     const queryParam = searchParams.get("search") ?? ""
     setQuery(queryParam)
-  }, [])
-
-  const resultFilter = (drug: any) => drug.name !== "" && ((drug.name.toLowerCase().includes(query.toLowerCase())) || drug.keywords?.toLowerCase().indexOf(query.toLowerCase()) !== -1)
+  }, [searchParams])
 
   const menuItems = [
     { name: "Sdílet aplikaci", onClick: () => setShowQR(true) }
@@ -30,7 +29,7 @@ export default function Search() {
       <S.Header>
         <S.HeaderLeft>
           <S.SearchIcon><FontAwesomeIcon icon={faMagnifyingGlass} /></S.SearchIcon>
-          <input type="text" name="search" value={query} onChange={(e) => setQuery(e.target.value)} placeholder="Název léku" size={10}/>
+          <input type="text" name="search" value={query} onChange={(e) => setQuery(e.target.value)} placeholder="Název léku" size={10} />
         </S.HeaderLeft>
         <S.MenuButton onClick={() => setShowMenu(prev => !prev)} aria-label="menu">
           <FontAwesomeIcon icon={faEllipsisVertical} />
@@ -44,14 +43,8 @@ export default function Search() {
       </S.Header>
       <S.Main>
         {loading ? <S.Loading><img src="/piggy-bw.svg" alt="loading" /></S.Loading> :
-          drugList.filter(resultFilter).length === 0 ? <S.ResultMessage>Žádný lek nenalezen</S.ResultMessage> :
-          <ul>
-            {
-              drugList.filter(resultFilter).map((drug: any) => (
-                <li key={drug.id} data-testid={drug.id}><Link to={`/drug/${drug.id}`}>{drug.name}</Link></li>
-              ))
-            }
-          </ul>}
+          <List query={query} drugList={drugList} />
+        }
       </S.Main>
       {showQR && <ShareModal hide={() => setShowQR(false)} />}
     </>
