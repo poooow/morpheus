@@ -9,8 +9,6 @@ interface ListProps {
 
 function DrugList({ query, drugList }: ListProps) {
 
-  console.log('render list')
-
   const resultFilter = (drug: any) => drug.name !== "" && ((drug.name.toLowerCase().includes(query.toLowerCase())) || drug.keywords?.toLowerCase().indexOf(query.toLowerCase()) !== -1)
 
   return (
