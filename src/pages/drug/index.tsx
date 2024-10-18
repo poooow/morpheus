@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useCallback } from 'react'
 import { useData } from '../../context/dbContext'
 import { useLocal } from '../../context/localContext'
 import { Link, useParams } from 'react-router-dom'
@@ -44,9 +44,11 @@ export default function Drug() {
 
   const menuItems = [
     { id: 'steps', name: 'Výběr po krocích', onClick: () => handleSelectMenuItem('steps') },
-    { id: 'swipe', name: 'Výběr swipe', onClick: () => handleSelectMenuItem('swipe')},
-    { id: null, name: 'Skrýt výběr', onClick: () => handleSelectMenuItem(null)},
+    { id: 'swipe', name: 'Výběr swipe', onClick: () => handleSelectMenuItem('swipe') },
+    { id: null, name: 'Skrýt výběr', onClick: () => handleSelectMenuItem(null) },
   ]
+
+  const processResults = useCallback((count: number, formula: string) => applyFormula(count, formula), [])
 
   return (
     <>
@@ -77,7 +79,7 @@ export default function Drug() {
             {selectedSelector === 'steps' && <InputSelectorSteps count={count} setCount={setCount} />}
             {selectedSelector === 'swipe' && <InputSelectorSwipe count={count} setCount={setCount} />}
             <S.Title>Dávkování</S.Title>
-            <S.Result>{applyFormula(count, drug.factor)} {drug.unit2}</S.Result>
+            <S.Result>{processResults(count, drug.factor)} {drug.unit2}</S.Result>
             <S.Description><Markdown>{drug.description}</Markdown></S.Description>
           </>
         }
